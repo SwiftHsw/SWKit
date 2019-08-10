@@ -7,7 +7,7 @@
 //
 
 #import "BHTabbarController.h"
-#import "ViewController.h"
+//#import "ViewController.h"
 #import "SWKit.h"
 //#import "QPHomeViewController.h"
 //#import "QPMeViewController.h"
@@ -23,20 +23,20 @@
  
     self.tabBar.barTintColor = [UIColor whiteColor];
     self.delegate =self;
-    
-    UIViewController *circle = [[UIViewController alloc] init];
-    [self setupChildVc:circle title:@"首页" image:@"首页-未选择" selectedImage:@"首页-选择"];
- 
-    
-    UIViewController *mess = [[UIViewController alloc] init];
-    [self setupChildVc:mess title:@"旗袍师" image:@"旗袍师-未选择" selectedImage:@"旗袍师-选择"];
- 
-    
-    UIViewController *order = [[UIViewController alloc] init];
-    [self setupChildVc:order title:@"订单" image:@"订单-未选择" selectedImage:@"订单-选择"];
-
-    UIViewController *share = [[UIViewController alloc] init];
-    [self setupChildVc:share title:@"我的" image:@"我的-未选择" selectedImage:@"我的-选择"];
+//
+//    UIViewController *circle = [[UIViewController alloc] init];
+//    [self setupChildVc:circle title:@"首页" image:@"首页-未选择" selectedImage:@"首页-选择"];
+//
+//
+//    UIViewController *mess = [[UIViewController alloc] init];
+//    [self setupChildVc:mess title:@"旗袍师" image:@"旗袍师-未选择" selectedImage:@"旗袍师-选择"];
+//
+//
+//    UIViewController *order = [[UIViewController alloc] init];
+//    [self setupChildVc:order title:@"订单" image:@"订单-未选择" selectedImage:@"订单-选择"];
+//
+//    UIViewController *share = [[UIViewController alloc] init];
+//    [self setupChildVc:share title:@"我的" image:@"我的-未选择" selectedImage:@"我的-选择"];
     
 }
 
@@ -50,14 +50,14 @@
     vc.tabBarItem.image = originalImage;
     vc.tabBarItem.selectedImage = originalSelectedImage;
     
-    
-    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                           [SWKit colorWithHexString:@"#CFCFCF"], UITextAttributeTextColor,
-                                           nil] forState:UIControlStateNormal];
-    
-    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                           BHBlackColor, UITextAttributeTextColor,
-                                           nil] forState:UIControlStateSelected];
+//    
+//    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                           [SWKit colorWithHexString:@"#CFCFCF"], UITextAttributeTextColor,
+//                                           nil] forState:UIControlStateNormal];
+//    
+//    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                           BHBlackColor, UITextAttributeTextColor,
+//                                           nil] forState:UIControlStateSelected];
     
     BHNavigationViewController *nav = [[BHNavigationViewController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];

@@ -57,6 +57,8 @@
 //    
 //    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
 //                                           BHBlackColor, UITextAttributeTextColor,
+    
+    //
 //                                           nil] forState:UIControlStateSelected];
     
     BHNavigationViewController *nav = [[BHNavigationViewController alloc] initWithRootViewController:vc];

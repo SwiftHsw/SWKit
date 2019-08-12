@@ -41,7 +41,7 @@
 }
 
 
-- (void)setupChildVc:(UIViewController *)vc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage {
+- (void)setupChildVc:(UIViewController *)vc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage  normalColor:(UIColor *)normalColor selectColor:(UIColor *)selectColor{
     
     UIImage *originalImage = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIImage *originalSelectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -50,21 +50,20 @@
     vc.tabBarItem.image = originalImage;
     vc.tabBarItem.selectedImage = originalSelectedImage;
     
-//    
-//    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                           [SWKit colorWithHexString:@"#CFCFCF"], UITextAttributeTextColor,
-//                                           nil] forState:UIControlStateNormal];
-//    
-//    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                           BHBlackColor, UITextAttributeTextColor,
-    
     //
-//                                           nil] forState:UIControlStateSelected];
+    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                           normalColor, UITextAttributeTextColor,
+                                           nil] forState:UIControlStateNormal];
+    
+    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                           selectColor, UITextAttributeTextColor,
+                                           
+                                           
+                                           nil] forState:UIControlStateSelected];
     
     BHNavigationViewController *nav = [[BHNavigationViewController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];
 }
- 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
 //    

@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, ATMarginType) {
  */
 
 
-@interface UIButton (ATEdgeInsets)
+@interface UIButton (SWEdgeInsets)
 
 /**
  *  利用UIButton的titleEdgeInsets和imageEdgeInsets来实现图片和标题的自由排布

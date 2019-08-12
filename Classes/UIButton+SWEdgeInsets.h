@@ -66,20 +66,5 @@ typedef NS_ENUM(NSInteger, ATMarginType) {
  */
 - (void)setEdgeInsetsWithType:(ATEdgeInsetsType)edgeInsetsType marginType:(ATMarginType)marginType margin:(CGFloat)margin;
 
-
-
-/**
- *  图片在上，标题在下
- *
- *  @param spacing image 和 title 之间的间隙
- */
-- (void)setImageUpTitleDownWithSpacing:(CGFloat)spacing __deprecated_msg("Method deprecated. Use `setImagePositionWithType:spacing:`");
-
-/**
- *  图片在右，标题在左
- *
- *  @param spacing image 和 title 之间的间隙
- */
-- (void)setImageRightTitleLeftWithSpacing:(CGFloat)spacing __deprecated_msg("Method deprecated. Use `setImagePositionWithType:spacing:`");
-
+ 
 @end

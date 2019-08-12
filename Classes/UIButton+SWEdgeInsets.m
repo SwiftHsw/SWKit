@@ -67,13 +67,7 @@
     }
 }
 
-- (void)setImageUpTitleDownWithSpacing:(CGFloat)spacing {
-    [self setImagePositionWithType:ATImagePositionTypeTop spacing:spacing];
-}
-
-- (void)setImageRightTitleLeftWithSpacing:(CGFloat)spacing {
-    [self setImagePositionWithType:ATImagePositionTypeRight spacing:spacing];
-}
+ 
 
 - (void)setEdgeInsetsWithType:(ATEdgeInsetsType)edgeInsetsType marginType:(ATMarginType)marginType margin:(CGFloat)margin {
     CGSize itemSize = CGSizeZero;

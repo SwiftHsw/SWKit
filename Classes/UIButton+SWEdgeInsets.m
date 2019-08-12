@@ -6,9 +6,9 @@
 //  Copyright © 2018年 艾腾软件.SW. All rights reserved.
 //
 
-#import "UIButton+ATEdgeInsets.h"
+#import "UIButton+SWEdgeInsets.h"
 
-@implementation UIButton (ATEdgeInsets)
+@implementation UIButton (SWEdgeInsets)
 
 - (void)setImagePositionWithType:(ATImagePositionType)type spacing:(CGFloat)spacing {
     CGSize imageSize = [self imageForState:UIControlStateNormal].size;

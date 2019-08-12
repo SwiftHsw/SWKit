@@ -7,7 +7,7 @@
 //  Copyright © 2017年 陈俏俊. All rights reserved.
 //
 
-#import "ATAlertViewController.h"
+#import "SWAlertViewController.h"
 #import "SWKit.h"
 @implementation ATAlertViewController
 

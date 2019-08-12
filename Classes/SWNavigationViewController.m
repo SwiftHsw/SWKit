@@ -6,13 +6,13 @@
 //  Copyright © 2019 黄世文. All rights reserved.
 //
 
-#import "BHNavigationViewController.h"
+#import "SWNavigationViewController.h"
 #import "SWKit.h"
-@interface BHNavigationViewController ()<UIGestureRecognizerDelegate>
+@interface SWNavigationViewController ()<UIGestureRecognizerDelegate>
 
 @end
 
-@implementation BHNavigationViewController
+@implementation SWNavigationViewController
 
 + (void)initialize {
     

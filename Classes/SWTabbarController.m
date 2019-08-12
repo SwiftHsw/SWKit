@@ -6,14 +6,14 @@
 //  Copyright © 2019年 Shiwen Huang. All rights reserved.
 //
 
-#import "BHTabbarController.h"
+#import "SWTabbarController.h"
 //#import "ViewController.h"
 #import "SWKit.h"
 //#import "QPHomeViewController.h"
 //#import "QPMeViewController.h"
 //#import "QPOrderViewController.h"
 //#import "QPsViewController.h"
-#import "BHNavigationViewController.h"
+#import "SWNavigationViewController.h"
 @interface BHTabbarController ()<UITabBarControllerDelegate>
 @end
 
@@ -61,7 +61,7 @@
                                            
                                            nil] forState:UIControlStateSelected];
     
-    BHNavigationViewController *nav = [[BHNavigationViewController alloc] initWithRootViewController:vc];
+    SWNavigationViewController *nav = [[SWNavigationViewController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];
 }
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController

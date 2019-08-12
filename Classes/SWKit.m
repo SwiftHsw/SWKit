@@ -2977,7 +2977,7 @@ void _SystemSoundFinishedPlayingCallback(SystemSoundID sound_id, void* user_data
     
 @end
 
-#import "BHNavigationViewController.h"
+#import "SWNavigationViewController.h"
 @implementation SWSuperViewContoller
 
 
@@ -3026,7 +3026,7 @@ void _SystemSoundFinishedPlayingCallback(SystemSoundID sound_id, void* user_data
 }
 
 -(void)setNavEnable:(BOOL)isEnable{
-    BHNavigationViewController  * nav = (BHNavigationViewController*)self.navigationController;
+    SWNavigationViewController  * nav = (SWNavigationViewController*)self.navigationController;
     nav.isEnabled = isEnable;
 }
 

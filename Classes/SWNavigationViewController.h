@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BHNavigationViewController : UINavigationController
+@interface SWNavigationViewController : UINavigationController
 
 @property (nonatomic,assign)BOOL isEnabled;
 @end

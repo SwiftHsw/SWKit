@@ -61,7 +61,7 @@
     [vc.tabBarItem setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [vc.tabBarItem setTitleTextAttributes:attrSelected forState:UIControlStateSelected];
                                            
-                                           nil] forState:UIControlStateSelected];
+                                      
     
     SWNavigationViewController *nav = [[SWNavigationViewController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];

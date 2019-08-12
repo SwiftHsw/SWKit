@@ -50,14 +50,16 @@
     vc.tabBarItem.image = originalImage;
     vc.tabBarItem.selectedImage = originalSelectedImage;
     
-    //
-    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                           normalColor, UITextAttributeTextColor,
-                                           nil] forState:UIControlStateNormal];
+    // 默认
+    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+    attrs[NSForegroundColorAttributeName] = normalColor;
     
-    [vc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                           selectColor, UITextAttributeTextColor,
-                                           
+    // 选中
+    NSMutableDictionary *attrSelected = [NSMutableDictionary dictionary];
+    attrSelected[NSForegroundColorAttributeName] = selectColor;
+    
+    [vc.tabBarItem setTitleTextAttributes:attrs forState:UIControlStateNormal];
+    [vc.tabBarItem setTitleTextAttributes:attrSelected forState:UIControlStateSelected];
                                            
                                            nil] forState:UIControlStateSelected];
     

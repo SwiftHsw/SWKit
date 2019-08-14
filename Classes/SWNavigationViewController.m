@@ -18,11 +18,11 @@
     
     UINavigationBar *bar = [UINavigationBar appearance];
     [bar setBarTintColor:[UIColor whiteColor]];
-    [bar setTintColor:BHBlackColor];
+    [bar setTintColor:SWMainColor];
     bar.translucent= NO;
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSFontAttributeName] = kBoldFontWithSize(17) ;
-    attrs[NSForegroundColorAttributeName] = BHBlackColor;
+    attrs[NSForegroundColorAttributeName] = SWMainColor;
     [bar setTitleTextAttributes:attrs];
  
 }

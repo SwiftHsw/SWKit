@@ -8,7 +8,7 @@
 
 #import "UIBarButtonItem+SWExtension.h"
 #import "SWKit.h"
-#define BHBlackColor [UIColor blackColor]
+
 @implementation UIBarButtonItem (SWExtension)
 
 + (instancetype)itemWithImageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName target:(id)target action:(SEL)action
@@ -41,7 +41,7 @@
     [tagButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [tagButton setImage:[UIImage imageNamed:highImageName] forState:UIControlStateHighlighted];
     [tagButton setTitle:title forState:UIControlStateNormal];
-    UIColor *color = ([title isEqualToString:@"完成"] || [title isEqualToString:@"刷新"] || [title isEqualToString:@"返回"])  ? BHBlackColor : [UIColor whiteColor];
+    UIColor *color = ([title isEqualToString:@"完成"] || [title isEqualToString:@"刷新"] || [title isEqualToString:@"返回"])  ? SWMainColor : [UIColor whiteColor];
     
     [tagButton setTitleColor:color forState:UIControlStateNormal];
     tagButton.imageEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
@@ -51,7 +51,7 @@
     }
     if ([title isEqualToString:@"我的订单"] || [title isEqualToString:@"旗袍师"]) {
         tagButton.titleLabel.font = [UIFont boldSystemFontOfSize:24];
-        [tagButton setTitleColor:BHBlackColor forState:UIControlStateNormal];
+        [tagButton setTitleColor:SWMainColor forState:UIControlStateNormal];
     }
     
     

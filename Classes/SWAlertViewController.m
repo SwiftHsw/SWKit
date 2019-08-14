@@ -9,9 +9,9 @@
 
 #import "SWAlertViewController.h"
 #import "SWKit.h"
-@implementation ATAlertViewController
+@implementation SWAlertViewController
 
-+ (void)showInController:(UIViewController *)viewController title:(NSString *)title message:(NSString *)message cancelButton:(NSString *)cancelButtonTitle other:(NSString *)otherButtonTitle completionHandler:(void (^)(ATAlertButtonStyle buttonStyle))block;
++ (void)showInController:(UIViewController *)viewController title:(NSString *)title message:(NSString *)message cancelButton:(NSString *)cancelButtonTitle other:(NSString *)otherButtonTitle completionHandler:(void (^)(SWAlertButtonStyle buttonStyle))block;
 {
     
     UIAlertController *alertCtr = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -27,7 +27,7 @@
 //            [MBProgressHUD hideAllHUDsForView:[ATGeneralFuncUtil getCurrentVC].view animated:YES];
             if (block) {
                 [viewController setNeedsStatusBarAppearanceUpdate];
-                block(ATAlertButtonStyleCancel);
+                block(SWAlertButtonStyleCancel);
             }
         }];
  
@@ -38,7 +38,7 @@
 //                [MBProgressHUD hideAllHUDsForView:[ATGeneralFuncUtil getCurrentVC].view animated:YES];
                 if (block) {
                     [viewController setNeedsStatusBarAppearanceUpdate];
-                    block(ATAlertButtonStyleOK);
+                    block(SWAlertButtonStyleOK);
                 }
             }];
             [otherAction setValue:[SWKit colorWithHexString:@"#111111"] forKey:@"titleTextColor"];
@@ -50,7 +50,7 @@
 //                [MBProgressHUD hideAllHUDsForView:[ATGeneralFuncUtil getCurrentVC].view animated:YES];
                 if (block) {
                     [viewController setNeedsStatusBarAppearanceUpdate];
-                    block(ATAlertButtonStyleOK);
+                    block(SWAlertButtonStyleOK);
                 }
             }];
             [otherAction setValue:[SWKit colorWithHexString:@"#30C8EF"] forKey:@"titleTextColor"];

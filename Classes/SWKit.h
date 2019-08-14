@@ -23,7 +23,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define  BHBlackColor [UIColor blackColor]
+#define  SWMainColor [kUserDefaults objectForKey:@"SWKitMainColor"]
+
 #pragma mark - 常用沙盒地址以及文件夹
 
 #define ATDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
@@ -241,7 +242,12 @@ extern CGPoint SCREEN_CENTER;
 +(void)setIsYoukeLogon:(BOOL)isYk;
 +(BOOL)isYouke;
 
+//适配ios 11 以上 一般放在delegate入口
++ (void)setupiOS_11Sp;
 
+
+//设置主题颜色
++ (void)setMainColor:(NSString *)color;
 
 
 #pragma mark -

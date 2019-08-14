@@ -35,6 +35,20 @@ static BOOL isYouKe = NO;
 + (BOOL)isYouke{
     return isYouKe;
 }
++ (void)setupiOS_11Sp{
+    if (@available(iOS 11.0, *)){
+        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+        [UITableView appearance].estimatedRowHeight = 0.f;
+        [UITableView appearance].estimatedSectionFooterHeight = 0.f;
+        [UITableView appearance].estimatedSectionHeaderHeight = 0.f;
+    }
+}
+
++ (void)setMainColor:(NSString *)color{
+    [kUserDefaults setObject:color forKey:@"SWKitMainColor"];
+}
+
+
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

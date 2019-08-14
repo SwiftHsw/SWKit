@@ -7,17 +7,12 @@
 //
 
 #import "SWTabbarController.h"
-//#import "ViewController.h"
 #import "SWKit.h"
-//#import "QPHomeViewController.h"
-//#import "QPMeViewController.h"
-//#import "QPOrderViewController.h"
-//#import "QPsViewController.h"
 #import "SWNavigationViewController.h"
-@interface BHTabbarController ()<UITabBarControllerDelegate>
+@interface SWTabbarController ()<UITabBarControllerDelegate>
 @end
 
-@implementation BHTabbarController
+@implementation SWTabbarController
 - (void)viewDidLoad {
     [super viewDidLoad];
  

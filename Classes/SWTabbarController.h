@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BHTabbarController : UITabBarController
+@interface SWTabbarController : UITabBarController
 
 - (void)setupChildVc:(UIViewController *)vc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage  normalColor:(UIColor *)normalColor selectColor:(UIColor *)selectColor;
 @end

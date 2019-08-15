@@ -23,7 +23,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define  SWMainColor [kUserDefaults objectForKey:@"SWKitMainColor"]
+#define  SWMainColor [SWKit colorWithHexString:[kUserDefaults objectForKey:@"SWKitMainColor"]]
 
 #pragma mark - 常用沙盒地址以及文件夹
 
@@ -236,7 +236,8 @@ extern CGRect  SCREEN_FRAME;
 extern CGPoint SCREEN_CENTER;
 
 
-
+//打开appStroe
++ (void)openAppStoreURL:(NSString *)url;
 //静态存储
 
 +(void)setIsYoukeLogon:(BOOL)isYk;

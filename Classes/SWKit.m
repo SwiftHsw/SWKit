@@ -48,6 +48,10 @@ static BOOL isYouKe = NO;
     [kUserDefaults setObject:color forKey:@"SWKitMainColor"];
 }
 
++ (void)openAppStoreURL:(NSString *)url{
+    NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@?action=write-review", url ];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str]];
+}
 
 + (void)load {
     static dispatch_once_t onceToken;

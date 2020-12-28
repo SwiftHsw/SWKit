@@ -1,10 +1,10 @@
 
 //
-//  ATAlertViewController.m
-//  云付通
+//  SWAlertViewController.m
 //
-//  Created by 陈俏俊 on 2017/8/18.
-//  Copyright © 2017年 陈俏俊. All rights reserved.
+//
+//  Created by 黄世文 on 2017/8/18.
+//  Copyright © 2017年 黄世文. All rights reserved.
 //
 
 #import "SWAlertViewController.h"
@@ -19,7 +19,7 @@
     NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
     paragraph.alignment = NSTextAlignmentLeft;
     NSMutableAttributedString *alertControllerMessageStr = [[NSMutableAttributedString alloc] initWithString:message];
-    [alertControllerMessageStr addAttribute:NSForegroundColorAttributeName value:[SWKit colorWithHexString:@"#111111"] range:NSMakeRange(0, alertControllerMessageStr.length)];
+    [alertControllerMessageStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#111111"] range:NSMakeRange(0, alertControllerMessageStr.length)];
     [alertControllerMessageStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:26/2] range:NSMakeRange(0,alertControllerMessageStr.length)];
     [alertCtr setValue:alertControllerMessageStr forKey:@"attributedMessage"];
     if (cancelButtonTitle.length) {
@@ -41,7 +41,7 @@
                     block(SWAlertButtonStyleOK);
                 }
             }];
-            [otherAction setValue:[SWKit colorWithHexString:@"#111111"] forKey:@"titleTextColor"];
+            [otherAction setValue:[UIColor colorWithHexString:@"#111111"] forKey:@"titleTextColor"];
             [alertCtr addAction:otherAction];
         }
     } else {
@@ -53,7 +53,7 @@
                     block(SWAlertButtonStyleOK);
                 }
             }];
-            [otherAction setValue:[SWKit colorWithHexString:@"#30C8EF"] forKey:@"titleTextColor"];
+            [otherAction setValue:[UIColor colorWithHexString:@"#30C8EF"] forKey:@"titleTextColor"];
             [alertCtr addAction:otherAction];
         }
     }

@@ -1,4 +1,12 @@
- 
+
+ //
+ //  SWAlertViewController.h
+ //
+ //
+ //  Created by 黄世文 on 2017/8/18.
+ //  Copyright © 2017年 黄世文. All rights reserved.
+ //
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 

@@ -1,6 +1,6 @@
 //
 //  BHNavigationViewController.m
-//  XMBHProject2
+//
 //
 //  Created by 黄世文 on 2019/7/6.
 //  Copyright © 2019 黄世文. All rights reserved.
@@ -8,6 +8,7 @@
 
 #import "SWNavigationViewController.h"
 #import "SWKit.h"
+
 @interface SWNavigationViewController ()<UIGestureRecognizerDelegate>
 
 @end
@@ -63,7 +64,7 @@
     }
     
     //全局消失键盘
-    [[SWKit getCurrentVC].view endEditing:YES];
+    [[UIView getCurrentVC].view endEditing:YES];
     
     return YES;
 }
@@ -94,7 +95,7 @@
         tagButton.size = CGSizeMake(50, 50);
         tagButton.imageEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
         [tagButton addTarget:self  action:@selector(black) forControlEvents:UIControlEventTouchUpInside];
-        
+         
         
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:tagButton];
         viewController.hidesBottomBarWhenPushed = YES;

@@ -16,8 +16,10 @@
 #import "SWAlertViewController.h"
 #import "SWNavigationViewController.h"
 #import "SWTabbarController.h"
+#import "SWSuperViewContoller.h"
 #import "UIBarButtonItem+SWExtension.h"
 #import "UIButton+SWEdgeInsets.h"
+#import "UIButton+SW_Extention.h"
 #import "UIViewController+SW_Extension.h"
 #import "UITextField+SW_Extension.h"
 #import "UIView+SW_Extension.h"
@@ -28,8 +30,9 @@
 #import "NSObject+SW_File.h"
 #import "AppUserCache.h"
 #import "UILabel+SW_Extension.h"
+#import "UITableView+SW_Extension.h"
 
- 
+
 
 //输出
 #if DEBUG
@@ -165,9 +168,8 @@ x.clipsToBounds = YES
 #define LOADNIBWITHNAME(CLASS, OWNER) [[[NSBundle mainBundle] loadNibNamed:CLASS owner:OWNER options:nil] lastObject]
 
 //解决循环引用
-#define weakSelf(object)            __weak typeof(object) weakSelf = object
-//强引用
-#define strongSelf(object)  __strong typeof(object) object = weak##object;
+#define WeakSelf(weakSelf)      __weak __typeof(&*self)    weakSelf  = self;
+#define StrongSelf(strongSelf)  __strong __typeof(&*self) strongSelf = weakSelf;
 
 
 //设置圆角边框

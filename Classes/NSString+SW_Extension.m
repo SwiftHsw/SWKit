@@ -367,4 +367,96 @@
     if ([platform isEqualToString:@"iPhone Simulator"] || [platform isEqualToString:@"x86_64"] || [platform isEqualToString:@"i386"]) return @"iPhone Simulator";
     return platform;
 }
+
+
+#pragma mark -- 字节大小转换
+
++ (NSString*)formatSizeFromByte:(long long)bytes{
+    int multiplyFactor = 0;
+    double convertedValue = bytes;
+    NSArray *tokens = [NSArray arrayWithObjects:@"B",@"KB",@"MB",@"GB",@"TB",nil];
+    while (convertedValue > 1024) {
+        convertedValue /= 1024;
+        multiplyFactor++;
+    }
+    return [NSString stringWithFormat:@"%4.1f %@",convertedValue, [tokens objectAtIndex:multiplyFactor]];
+}
+
+#pragma mark -- 时长转换
+
++ (NSString *)convertDurationToString:(NSTimeInterval)duration{
+    NSInteger hour = duration / 3600;
+    NSInteger minute = (duration - hour*3600) / 60;
+    NSInteger seconds = (duration - hour *3600 - minute*60);
+    NSString *strDuration  = @"";
+    
+    strDuration = [NSString stringWithFormat:@"%02ld:",hour];
+    strDuration = [strDuration stringByAppendingFormat:@"%02ld:",minute];
+    strDuration = [strDuration stringByAppendingFormat:@"%02ld",seconds];
+    return strDuration;
+}
+
+#pragma mark - 设备信息
+
++ (NSString *)deviceModel
+{
+    return [[UIDevice currentDevice] model];
+}
+
++ (NSString *)deviceName
+{
+    return [[UIDevice currentDevice] name];
+}
+
++ (NSString *)deviceSystemVersion
+{
+    return [[UIDevice currentDevice] systemVersion];
+}
+
++ (NSString *)deviceSystemName
+{
+    return [[UIDevice currentDevice] systemName];
+}
+
++ (NSString *)deviceCurrentLanguage
+{
+    NSArray *languages = [NSLocale preferredLanguages];
+    
+    NSString *curLanguage = [languages objectAtIndex:0];
+    
+    return curLanguage;
+}
+
++ (int)deviceBatteryValue
+{
+    return [[UIDevice currentDevice] batteryLevel]*100;
+}
+
++ (CGSize)deviceResolution
+{
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    
+    CGFloat scale = [[UIScreen mainScreen] scale];
+    
+    return CGSizeMake(screenSize.width*scale, screenSize.height*scale);
+}
+
++ (CGFloat)deviceScreenScale
+{
+    CGFloat scale = [[UIScreen mainScreen] scale];
+    
+    return scale;
+    
+}
+
++ (NSString *)systemVersion
+{
+    return [[UIDevice currentDevice] systemVersion];
+}
+
++ (CGFloat)IOSVersion
+{
+    return [[self systemVersion] floatValue];
+}
+
 @end

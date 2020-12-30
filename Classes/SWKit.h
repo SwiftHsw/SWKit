@@ -13,25 +13,27 @@
 #include <sys/sysctl.h> 
 #import <CoreLocation/CoreLocation.h>
 #import <CommonCrypto/CommonDigest.h>
-#import "SWAlertViewController.h"
-#import "SWNavigationViewController.h"
-#import "SWTabbarController.h"
-#import "SWSuperViewContoller.h"
-#import "UIBarButtonItem+SWExtension.h"
-#import "UIButton+SWEdgeInsets.h"
-#import "UIButton+SW_Extention.h"
-#import "UIViewController+SW_Extension.h"
-#import "UITextField+SW_Extension.h"
-#import "UIView+SW_Extension.h"
-#import "UIImage+SW_Extension.h"
-#import "UIColor+SW_Extension.h"
-#import "NSObject+SW_SystemTool.h"
-#import "NSString+SW_Extension.h"
-#import "NSObject+SW_File.h"
-#import "AppUserCache.h"
-#import "UILabel+SW_Extension.h"
-#import "UITableView+SW_Extension.h"
-
+#import "SWAlertViewController.h"         //弹窗工具
+#import "SWNavigationViewController.h"    //导航基类
+#import "SWTabbarController.h"            //Tabbar基类
+#import "SWSuperViewContoller.h"          //基类减少代码量
+#import "UIBarButtonItem+SWExtension.h"   //导航按钮工具
+#import "UIButton+SWEdgeInsets.h"         //按钮分类
+#import "UIButton+SW_Extention.h"         //按钮快速集成
+#import "UIViewController+SW_Extension.h" //控制器拓展工具、拍照相册等
+#import "UITextField+SW_Extension.h"      //动态输入框属性
+#import "UIView+SW_Extension.h"           //坐标工具
+#import "UIImage+SW_Extension.h"          //图片工具
+#import "NSObject+SW_VideoTool.h"         //视频工具
+#import "UIColor+SW_Extension.h"          //颜色转换
+#import "NSDate+SW_Extension.h"           //时间管理大师
+#import "NSObject+SW_SystemTool.h"        //设备工具等
+#import "NSString+SW_Extension.h"          //字符串
+#import "NSObject+SW_File.h"               //文件管理助手
+#import "AppUserCache.h"                  //app用户登陆数据缓存
+#import "UILabel+SW_Extension.h"          //文本
+#import "ApplePayManager.h"               //Apple内购
+#import "AppNetworkTool.h"                 //网络请求
 
 
 //输出

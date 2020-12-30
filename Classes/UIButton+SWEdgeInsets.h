@@ -1,8 +1,8 @@
 //
-//  UIButton+ATEdgeInsets.h
-//  ATUtils
+//  UIButton+SWEdgeInsets.h
+//  SWUtils
 //
-//  Created by  677676  on 2018/1/27.
+//  CreSWed by  677676  on 2018/1/27.
 //  Copyright © 2018年 艾腾软件.SW. All rights reserved.
 //
 
@@ -10,27 +10,27 @@
 
 
 
-typedef NS_ENUM(NSInteger,ATImagePositionType) {
-    ATImagePositionTypeLeft,   //图片在左，标题在右，默认风格
-    ATImagePositionTypeRight,  //图片在右，标题在左
-    ATImagePositionTypeTop,    //图片在上，标题在下
-    ATImagePositionTypeBottom  //图片在下，标题在上
+typedef NS_ENUM(NSInteger,SWImagePositionType) {
+    SWImagePositionTypeLeft,   //图片在左，标题在右，默认风格
+    SWImagePositionTypeRight,  //图片在右，标题在左
+    SWImagePositionTypeTop,    //图片在上，标题在下
+    SWImagePositionTypeBottom  //图片在下，标题在上
 };
 
-typedef NS_ENUM(NSInteger, ATEdgeInsetsType) {
-    ATEdgeInsetsTypeTitle,//标题
-    ATEdgeInsetsTypeImage//图片
+typedef NS_ENUM(NSInteger, SWEdgeInsetsType) {
+    SWEdgeInsetsTypeTitle,//标题
+    SWEdgeInsetsTypeImage//图片
 };
 
-typedef NS_ENUM(NSInteger, ATMarginType) {
-    ATMarginTypeTop         ,
-    ATMarginTypeBottom      ,
-    ATMarginTypeLeft        ,
-    ATMarginTypeRight       ,
-    ATMarginTypeTopLeft     ,
-    ATMarginTypeTopRight    ,
-    ATMarginTypeBottomLeft  ,
-    ATMarginTypeBottomRight
+typedef NS_ENUM(NSInteger, SWMarginType) {
+    SWMarginTypeTop         ,
+    SWMarginTypeBottom      ,
+    SWMarginTypeLeft        ,
+    SWMarginTypeRight       ,
+    SWMarginTypeTopLeft     ,
+    SWMarginTypeTopRight    ,
+    SWMarginTypeBottomLeft  ,
+    SWMarginTypeBottomRight
 };
 
 /**
@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, ATMarginType) {
  *  @param type    图片位置类型
  *  @param spacing 图片和标题之间的间隙
  */
-- (void)setImagePositionWithType:(ATImagePositionType)type spacing:(CGFloat)spacing;
+- (void)setImagePositionWithType:(SWImagePositionType)type spacing:(CGFloat)spacing;
 
 /**
  *  按钮只设置了title or image，该方法可以改变它们的位置
@@ -64,7 +64,7 @@ typedef NS_ENUM(NSInteger, ATMarginType) {
  *  @param marginType     <#marginType description#>
  *  @param margin         <#margin description#>
  */
-- (void)setEdgeInsetsWithType:(ATEdgeInsetsType)edgeInsetsType marginType:(ATMarginType)marginType margin:(CGFloat)margin;
+- (void)setEdgeInsetsWithType:(SWEdgeInsetsType)edgeInsetsType marginType:(SWMarginType)marginType margin:(CGFloat)margin;
 
  
 @end

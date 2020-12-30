@@ -34,9 +34,17 @@
         _tableView.tableFooterView = [[UIView alloc] init];
         _tableView.separatorColor = [UIColor colorWithHexString:@"#F5F5F5"];
         _tableView.delaysContentTouches = NO;
-//        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        //实现默认cell
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     }
     return _tableView;
+}
+
+-(void)setTableViewFrame:(CGRect)tableViewFrame{
+    _tableViewFrame = tableViewFrame;
+    self.tableView.frame = tableViewFrame;
 }
 /**
  *  懒加载collectionView
@@ -52,13 +60,17 @@
         flow.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15);
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT - NavBarHeight - SafeBottomHeight) collectionViewLayout:flow];
         _collectionView.scrollsToTop = YES;
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
     }
     return _collectionView;
 }
 
--(void)setNavEnable:(BOOL)isEnable{
+ 
+-(void)setIsNavFullBackEnable:(BOOL)isNavFullBackEnable{
+    _isNavFullBackEnable = isNavFullBackEnable;
     SWNavigationViewController  * nav = (SWNavigationViewController*)self.navigationController;
-    nav.isEnabled = isEnable;
+    nav.isEnabled = isNavFullBackEnable;
 }
 
 - (void) setStatusBarHidden:(BOOL) hidden {
@@ -137,17 +149,101 @@
     [self.view addSubview:background];
     
 }
-- (void)setNavgationBarHidden:(BOOL)hidden {
-    [self.navigationController setNavigationBarHidden:hidden animated:YES];
+- (void)setNavgationBarHidden:(BOOL)hidden animated:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:hidden animated:animated];
 }
 
 -(void)dealloc{
+     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    SWLog(@"dealloc--class释放成功")
+    SWLog(@"dealloc 释放成功")
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 //    [SVProgressHUD dismiss];
+}
+
+
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [UITableViewCell new];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return [UIView new];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return [UIView new];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return  0.01;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.01;
+}
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_11_0
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 0.01;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
+{
+    return 0.01;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section
+{
+    return 0.01;
+}
+
+#endif
+
+#pragma mark - UICollectionViewDataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return [UICollectionViewCell new];
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsZero;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeZero;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    return CGSizeZero;
 }
 
 @end

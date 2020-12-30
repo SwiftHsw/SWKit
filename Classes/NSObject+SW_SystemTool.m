@@ -8,6 +8,9 @@
 
 #import "NSObject+SW_SystemTool.h"
  
+#import <arpa/inet.h>
+#import <ifaddrs.h>
+ 
 
 static BOOL isYouKe = NO;
 static CFRunLoopObserverRef observer;
@@ -177,6 +180,100 @@ void _SystemSoundFinishedPlayingCallback(SystemSoundID sound_id, void* user_data
     }
 }
  
+#pragma mark - 闪光灯
+
++ (void)turnTorchOn:(BOOL)on
+{
+    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    if ([captureDevice hasTorch] && [captureDevice hasFlash]){
+        
+        [captureDevice lockForConfiguration:nil];
+        
+        if (on){
+            [captureDevice setTorchMode:AVCaptureTorchModeOn];
+            [captureDevice setFlashMode:AVCaptureFlashModeOn];
+        }else{
+            [captureDevice setTorchMode:AVCaptureTorchModeOff];
+            [captureDevice setFlashMode:AVCaptureFlashModeOff];
+        }
+        
+        [captureDevice unlockForConfiguration];
+    }
+}
+
+#pragma mark -- 获取设备当前ip地址
+
++ (void)deviceIpAddress:(void(^)(NSString *ip))resultHandler
+{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSString *ip = [self deviceIpAddress] ;
+        
+        if(resultHandler){
+            resultHandler(ip);
+        }
+        
+    });
+}
+
++ (NSString *)deviceIpAddress
+{
+    @autoreleasepool {
+        
+        NSMutableDictionary* result = [NSMutableDictionary dictionary];
+        
+        struct ifaddrs*    addrs;
+        
+        BOOL success = (getifaddrs(&addrs) == 0);
+        
+        if (success) {
+            
+            const struct ifaddrs* cursor = addrs;
+            
+            while (cursor != NULL) {
+                
+                NSMutableString* ip;
+                
+                if (cursor->ifa_addr->sa_family == AF_INET) {
+                    
+                    const struct sockaddr_in* dlAddr = (const struct sockaddr_in*)cursor->ifa_addr;
+                    
+                    const uint8_t* base = (const uint8_t*)&dlAddr->sin_addr;
+                    
+                    ip = [NSMutableString new];
+                    
+                    for (int i = 0; i < 4; i++) {
+                        
+                        if (i != 0)
+                            [ip appendFormat:@"."];
+                        
+                        [ip appendFormat:@"%d", base[i]];
+                        
+                    }
+                    
+                    [result setObject:(NSString*)ip forKey:[NSString stringWithFormat:@"%s", cursor->ifa_name]];
+                    
+                }
+                
+                cursor = cursor->ifa_next;
+            }
+            
+            freeifaddrs(addrs);
+        }
+        
+        if ([[result allKeys] containsObject:@"en0"]){
+            
+            return (NSString *)[result objectForKey:@"en0"];
+            
+        }
+    }
+    
+    return nil ;
+}
+
+
+
 +(void)setupCellSystemImageSize:(CGSize)size tableViewCell:(UITableViewCell *)cell{
     CGSize itemSize = size;
     UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);

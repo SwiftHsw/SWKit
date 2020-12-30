@@ -56,24 +56,17 @@ NS_ASSUME_NONNULL_BEGIN
 // 震动反馈 ios10以上
 + (void)shockPhone;
 
+//闪光灯
++ (void)turnTorchOn:(BOOL)on;
+
+#pragma mark -- 获取设备当前ip地址
+
++ (void)deviceIpAddress:(void(^)(NSString *ip))resultHandler;
++ (NSString *)deviceIpAddress;
  
-/**
- 通用Cell修改系统自带图片大小
- */
-+(void)setupCellSystemImageSize:(CGSize)size
-                  tableViewCell:(UITableViewCell *)cell;
-
-/*
- 通用Cell快速配置
- */
-+(void)cellName:(UITableViewCell *)cell textLableString:(NSString *)textLableString detaileTextLableString:(NSString *)detaileTextLableString  textLableColor:(UIColor *)textLableColor detaileTextLableColor:(UIColor *)detaileTextLableColor textLableFont:(NSInteger)textLableFont detaileTextLableFont:(NSInteger)detaileTextLableFont;
-
-
-
-#pragma mark -
-#pragma mark - 设备有关
 //配置
 #define UIWindowLevelPopOver 10000000000
+ 
 
 //获取系统版本
 + (CGFloat)systemVersion;
@@ -116,6 +109,21 @@ NS_ASSUME_NONNULL_BEGIN
  
 #pragma mark -
 #pragma mark - 快速创建UI
+
+
+
+/**
+ 通用Cell修改系统自带图片大小
+ */
++(void)setupCellSystemImageSize:(CGSize)size
+                  tableViewCell:(UITableViewCell *)cell;
+
+/*
+ 通用Cell快速配置
+ */
++(void)cellName:(UITableViewCell *)cell textLableString:(NSString *)textLableString detaileTextLableString:(NSString *)detaileTextLableString  textLableColor:(UIColor *)textLableColor detaileTextLableColor:(UIColor *)detaileTextLableColor textLableFont:(NSInteger)textLableFont detaileTextLableFont:(NSInteger)detaileTextLableFont;
+
+
 
 /**textField 背景色 字体颜色 是否密文 字体大小 文字 默认文字 文字对齐方式*/
 +(UITextField *)textFieldWithBackgroundColor:(UIColor *)backgrountColor textColor:(UIColor *)textColor secureTextEntry:(BOOL)secureTextEntry fontSize:(float)size font:(UIFont *)font text:(NSString *)text placeholder:(NSString *)placeholder textAlignment:(NSTextAlignment)textAlignment;

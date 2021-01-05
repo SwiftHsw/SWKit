@@ -161,6 +161,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 //    [SVProgressHUD dismiss];
+    self.sw_leftNavItemSpacing = self.sw_rightNavItemSpacing = 10;
 }
 
 

@@ -13,25 +13,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableView (SW_Extension)
-/**
- 背景视图
- */
-@property (nonatomic , strong) UIView *backView;
+ 
+///自定义占位文字内容
+@property (nonatomic,copy) NSString *nodataString;
+///是否展示占位view 默认不展示，需要展示请设置为YES
+@property (nonatomic,assign) BOOL isShowNodata;
 
-/**
- 不显示背景视图
- */
-@property (nonatomic , assign) BOOL unShowBackView;
 
-/**
- 是否可以滑动背景视图
- */
-@property (nonatomic , assign) BOOL canScrollBackView;
-
-/**
- 显示backView,忽略section的数组
- */
-@property (nonatomic , strong) NSMutableArray<NSNumber *> *ignoreSectionShowBackViewArr;
 @end
 
 NS_ASSUME_NONNULL_END

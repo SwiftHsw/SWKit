@@ -170,8 +170,10 @@ x.clipsToBounds = YES
 #define LOADNIBWITHNAME(CLASS, OWNER) [[[NSBundle mainBundle] loadNibNamed:CLASS owner:OWNER options:nil] lastObject]
 
 //解决循环引用
-#define weakSelf(type) __weak __typeof__(type) weakSelf = type;
-#define strongSelf(type) __strong __typeof__(type) strongSelf = type;
+
+#define WeakSelf(type)  __weak typeof(type) weak##type = type;
+#define StrongSelf(type)  __strong typeof(type) type = weak##type;
+
 
 
 //设置圆角边框

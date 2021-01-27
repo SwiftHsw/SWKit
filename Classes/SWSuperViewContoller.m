@@ -26,7 +26,7 @@
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NavBarHeight - SafeBottomHeight) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVBAR_HEIGHT - SAFEBOTTOM_HEIGHT) style:UITableViewStylePlain];
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
@@ -58,7 +58,7 @@
         CGFloat itemW = (SCREEN_WIDTH - 45)/2;
         flow.itemSize = CGSizeMake(itemW, itemW);
         flow.sectionInset = UIEdgeInsetsMake(15, 15, 15, 15);
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT - NavBarHeight - SafeBottomHeight) collectionViewLayout:flow];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT - NAVBAR_HEIGHT - SAFEBOTTOM_HEIGHT) collectionViewLayout:flow];
         _collectionView.scrollsToTop = YES;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -132,7 +132,7 @@
 
 - (void) setLeftButton:(NSString *)imageName {
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    leftButton.frame = CGRectMake(15.0f, StatusBarHeight + 11, 20.0f, 20.0f);
+    leftButton.frame = CGRectMake(15.0f, STATUSBAR_HEIGHT + 11, 20.0f, 20.0f);
     [leftButton setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:leftButton];
@@ -160,11 +160,9 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [SVProgressHUD dismiss];
     self.sw_leftNavItemSpacing = self.sw_rightNavItemSpacing = 10;
 }
-
-
+ 
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

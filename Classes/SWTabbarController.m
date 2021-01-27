@@ -83,7 +83,7 @@
 
 -(void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    self.tabBar.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - TabbarHeight, [UIScreen mainScreen].bounds.size.width, TabbarHeight);
+    self.tabBar.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - TABBAR_HEIGHT, [UIScreen mainScreen].bounds.size.width, TABBAR_HEIGHT);
     
     
     

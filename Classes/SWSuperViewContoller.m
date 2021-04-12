@@ -160,7 +160,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.sw_leftNavItemSpacing = self.sw_rightNavItemSpacing = 10;
+    
 }
  
 
@@ -243,6 +243,45 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
     return CGSizeZero;
+}
+
+
+
+- (void)takePhotoForCamera{
+    [self takePhotoForCameraWithEditing:NO];
+}
+
+- (void)takePhotoForCameraWithEditing:(BOOL)edit{
+   
+   if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+   {
+       UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+       imagePicker.delegate = self;
+       imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+       imagePicker.videoQuality = UIImagePickerControllerQualityTypeHigh;
+       imagePicker.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+       imagePicker.allowsEditing = edit;
+       [self presentViewController:imagePicker animated:YES completion:nil];
+   }
+   else
+   {
+       [SWAlertViewController showInController:self
+                                         title:@"提示" message:@"该设备暂不支持拍照" cancelButton:@"" other:@"确定" completionHandler:^(SWAlertButtonStyle buttonStyle) {
+           
+       }];
+       
+      
+   }
+   
+}
+
+-(void)takePhotoForLibraryWithEditing:(BOOL)edit{
+   UIImagePickerController *pick = [[UIImagePickerController alloc] init];
+      pick.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+      pick.delegate = self;
+      pick.allowsEditing = edit;
+      [pick.navigationBar setTintColor:[UIColor blackColor]];
+      [self presentViewController:pick animated:YES completion:nil];
 }
 
 @end

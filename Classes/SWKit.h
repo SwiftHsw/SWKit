@@ -19,8 +19,7 @@
 #import "SWSuperViewContoller.h"          //基类减少代码量
 #import "UIBarButtonItem+SWExtension.h"   //导航按钮工具
 #import "UIButton+SWEdgeInsets.h"         //按钮分类
-#import "UIButton+SW_Extention.h"         //按钮快速集成
-#import "UIViewController+SW_Extension.h" //控制器拓展工具、拍照相册等
+#import "UIButton+SW_Extention.h"         //按钮快速集成 
 #import "UITextField+SW_Extension.h"      //动态输入框属性
 #import "UIView+SW_Extension.h"           //坐标工具
 #import "UIImage+SW_Extension.h"          //图片工具
@@ -32,7 +31,6 @@
 #import "NSObject+SW_File.h"               //文件管理助手
 #import "AppUserCache.h"                  //app用户登陆数据缓存
 #import "UILabel+SW_Extension.h"          //文本
-#import "ApplePayManager.h"               //Apple内购
 #import "AppNetworkTool.h"                 //网络请求
 #import "SWSlidePopupView.h"               //底部弹出视图动画带手势
 

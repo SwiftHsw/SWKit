@@ -16,7 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
  UITableViewDataSource,
  UICollectionViewDelegate,
  UICollectionViewDataSource,
- UICollectionViewDelegateFlowLayout
+ UICollectionViewDelegateFlowLayout,
+ UIImagePickerControllerDelegate,
+ UINavigationControllerDelegate
 >
 
 /** 通用列表视图*/
@@ -81,6 +83,23 @@ NS_ASSUME_NONNULL_BEGIN
 
  /** 设置背景图*/
 - (void) setBackgroundImage:(NSString *)imageName;
+
+
+/**
+ 拍照、不裁剪
+ */
+- (void)takePhotoForCamera;
+
+/**
+ 拍照、是否裁剪
+ */
+- (void)takePhotoForCameraWithEditing:(BOOL)edit;
+
+/**
+ 相册选择图片、是否裁剪
+ */
+- (void)takePhotoForLibraryWithEditing:(BOOL)edit;
+
 @end
 
 NS_ASSUME_NONNULL_END

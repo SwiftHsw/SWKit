@@ -233,8 +233,7 @@ static NSString *const kSWISHOW = @"kSWISHOW";
 
 - (void)sw_dealloc {
     [self freeNoDataViewIfNeeded];
-    [self sw_dealloc];
-    NSLog(@"RLTV 视图正常销毁");
+    [self sw_dealloc]; 
 }
 
 @end

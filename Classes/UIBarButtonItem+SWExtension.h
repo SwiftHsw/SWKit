@@ -42,4 +42,13 @@
 
 //系统统一按钮返回
 + (instancetype)itemWithNavImageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName target:(id)target action:(SEL)action;
+
+
+/**
+ 生成导航按钮
+ */
++(instancetype)barButtonTitle:(NSString *)title
+                        image:(UIImage *)image
+                       button:(void (^)(UIButton *btn))buttonblock;
+
 @end

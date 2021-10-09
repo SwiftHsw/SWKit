@@ -449,6 +449,21 @@
     
     return currentTimeString;
 }
+
+
++(NSString *)currentTimeStamp{
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a = [dat timeIntervalSince1970]*1000;
+    return [NSString stringWithFormat:@"%lld", (long long)a];
+}
+
++(NSString *)currentTimeStampForInter{
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a = [dat timeIntervalSince1970];
+    return [NSString stringWithFormat:@"%lld", (long long)a];
+}
+
+
     
 @end
  

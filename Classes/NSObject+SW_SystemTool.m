@@ -620,16 +620,6 @@ void myRunLoopObserver(CFRunLoopObserverRef observer, CFRunLoopActivity activity
  
 
 
-+ (NSAttributedString *)getAttributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font{
-    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-    //调整行间距
-    paragraphStyle.lineSpacing = lineSpace;
-    NSDictionary *attriDict = @{NSParagraphStyleAttributeName:paragraphStyle,NSKernAttributeName:@(kern),
-                                NSFontAttributeName:font};
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:string attributes:attriDict];
-    return attributedString;
-}
-
 +(UITextField *)textFieldWithBackgroundColor:(UIColor *)backgrountColor textColor:(UIColor *)textColor secureTextEntry:(BOOL)secureTextEntry fontSize:(float)size font:(UIFont *)font text:(NSString *)text placeholder:(NSString *)placeholder textAlignment:(NSTextAlignment)textAlignment
 {
     UITextField *textField = [[UITextField alloc] init];

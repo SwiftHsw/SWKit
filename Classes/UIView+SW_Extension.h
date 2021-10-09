@@ -70,6 +70,31 @@ extern CGPoint SCREEN_CENTER;
 - (void)removeAllSubviews;
 
 
+#pragma mark - 提示框
++ (void)showAletViewWithTitle:(NSString *)title
+                      message:(NSString *)message
+                     btnTitle:(NSString *)btnTitle
+                btnTitleColor:(UIColor *)btnTitleColor
+                btnTitleBlock:(void (^)(void))btnTitleBlock;
+
++ (void)showAletViewWithTitle:(NSString *)title
+                      message:(NSString *)message
+                     btnTitle:(NSString *)btnTitle
+                btnTitleColor:(UIColor *)btnTitleColor
+                btnTitleBlock:(void (^)(void))btnTitleBlock
+                  subBtnTitle:(NSString *)subBtnTitle
+             subBtnTitleColor:(UIColor *)subBtnTitleColor
+             subBtnTitleBlock:(void (^)(void))subBtnTitleBlock;
+
++ (void)showAletViewAndCancelWithTitle:(NSString *)title
+                               message:(NSString *)message
+                              btnTitle:(NSString *)btnTitle
+                         btnTitleColor:(UIColor *)btnTitleColor
+                         btnTitleBlock:(void (^)(void))btnTitleBlock
+                           subBtnTitle:(NSString *)subBtnTitle
+                      subBtnTitleColor:(UIColor *)subBtnTitleColor
+                      subBtnTitleBlock:(void (^)(void))subBtnTitleBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

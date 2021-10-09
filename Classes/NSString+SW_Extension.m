@@ -201,6 +201,23 @@
     return attributedString;
 }
 
+
++ (NSAttributedString *)getAttributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font{
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    //调整行间距
+    paragraphStyle.lineSpacing = lineSpace;
+    NSDictionary *attriDict = @{NSParagraphStyleAttributeName:paragraphStyle,NSKernAttributeName:@(kern),
+                                NSFontAttributeName:font};
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:string attributes:attriDict];
+    return attributedString;
+}
++(NSMutableAttributedString *)attributedWithString:(NSString *)str
+                                             color:(UIColor *)color
+                                              font:(UIFont *)font{
+    return [[NSMutableAttributedString alloc] initWithString:SWString(str) attributes:@{NSForegroundColorAttributeName:color,NSFontAttributeName:font}];
+    
+}
+
 + (CGSize)boundingSizeForText:(NSString *)text maxWidth:(CGFloat)maxWidth font:(UIFont *)font lineSpacing:(CGFloat)lineSpacing {
     CGSize calSize = CGSizeMake(maxWidth, MAXFLOAT);
     

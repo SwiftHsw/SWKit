@@ -7,6 +7,7 @@
 //
 
 #import "UIView+SW_Extension.h"
+ 
 
 CGFloat SCREEN_WIDTH;
 CGFloat SCREEN_HEIGHT;
@@ -327,5 +328,93 @@ CGPoint SCREEN_CENTER;
      // 如果没有找到则返回nil
    return nil;
 }
+
+
+#pragma mark - 提示框
++ (void)showAletViewWithTitle:(NSString *)title
+                      message:(NSString *)message
+                     btnTitle:(NSString *)btnTitle
+                btnTitleColor:(UIColor *)btnTitleColor
+                btnTitleBlock:(void (^)(void))btnTitleBlock
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *takePAction = [UIAlertAction actionWithTitle:btnTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (btnTitleBlock) btnTitleBlock();
+    }];
+    [alertVC addAction:takePAction];
+    UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertVC addAction:cancleAction];
+    if (([UIDevice currentDevice].systemVersion.floatValue >= 9.0f))
+    {
+        [takePAction setValue:btnTitleColor forKey:@"titleTextColor"];
+    }
+    [[self getCurrentVC] presentViewController:alertVC animated:YES completion:nil];
+}
+
++ (void)showAletViewWithTitle:(NSString *)title
+                      message:(NSString *)message
+                     btnTitle:(NSString *)btnTitle
+                btnTitleColor:(UIColor *)btnTitleColor
+                btnTitleBlock:(void (^)(void))btnTitleBlock
+                  subBtnTitle:(NSString *)subBtnTitle
+             subBtnTitleColor:(UIColor *)subBtnTitleColor
+             subBtnTitleBlock:(void (^)(void))subBtnTitleBlock
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *takePAction = [UIAlertAction actionWithTitle:btnTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (btnTitleBlock) btnTitleBlock();
+    }];
+    UIAlertAction *choosePAction = [UIAlertAction actionWithTitle:subBtnTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (subBtnTitleBlock) subBtnTitleBlock();
+    }];
+    [alertVC addAction:takePAction];
+    [alertVC addAction:choosePAction];
+    
+    if (([UIDevice currentDevice].systemVersion.floatValue >= 9.0f))
+    {
+        [takePAction setValue:btnTitleColor forKey:@"titleTextColor"];
+        [choosePAction setValue:subBtnTitleColor forKey:@"titleTextColor"];
+    }
+    
+    [[self getCurrentVC] presentViewController:alertVC animated:YES completion:nil];
+}
+
++ (void)showAletViewAndCancelWithTitle:(NSString *)title
+                               message:(NSString *)message
+                              btnTitle:(NSString *)btnTitle
+                         btnTitleColor:(UIColor *)btnTitleColor
+                         btnTitleBlock:(void (^)(void))btnTitleBlock
+                           subBtnTitle:(NSString *)subBtnTitle
+                      subBtnTitleColor:(UIColor *)subBtnTitleColor
+                      subBtnTitleBlock:(void (^)(void))subBtnTitleBlock
+{
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *takePAction = [UIAlertAction actionWithTitle:btnTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (btnTitleBlock) btnTitleBlock();
+    }];
+    UIAlertAction *choosePAction = [UIAlertAction actionWithTitle:subBtnTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (subBtnTitleBlock) subBtnTitleBlock();
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:nil];
+    [alertVC addAction:takePAction];
+    [alertVC addAction:choosePAction];
+    [alertVC addAction:cancelAction];
+    
+    if (([UIDevice currentDevice].systemVersion.floatValue >= 9.0f))
+    {
+        [takePAction setValue:btnTitleColor forKey:@"titleTextColor"];
+        [choosePAction setValue:subBtnTitleColor forKey:@"titleTextColor"];
+        [cancelAction setValue:UIColor.blackColor forKey:@"titleTextColor"];
+    }
+    
+    [[self getCurrentVC] presentViewController:alertVC animated:YES completion:nil];
+}
+
+
+
+
 @end
 

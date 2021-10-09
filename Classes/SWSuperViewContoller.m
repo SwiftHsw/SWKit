@@ -156,7 +156,7 @@
 -(void)dealloc{
      
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    SWLog(@"dealloc 释放成功")
+    SWLog(@"superViewController dealloc ***已释放*** ")
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

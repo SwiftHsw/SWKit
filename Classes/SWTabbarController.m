@@ -18,21 +18,6 @@
  
     self.tabBar.barTintColor = [UIColor whiteColor];
     self.delegate =self;
-//
-//    UIViewController *circle = [[UIViewController alloc] init];
-//    [self setupChildVc:circle title:@"首页" image:@"首页-未选择" selectedImage:@"首页-选择"];
-//
-//
-//    UIViewController *mess = [[UIViewController alloc] init];
-//    [self setupChildVc:mess title:@"旗袍师" image:@"旗袍师-未选择" selectedImage:@"旗袍师-选择"];
-//
-//
-//    UIViewController *order = [[UIViewController alloc] init];
-//    [self setupChildVc:order title:@"订单" image:@"订单-未选择" selectedImage:@"订单-选择"];
-//
-//    UIViewController *share = [[UIViewController alloc] init];
-//    [self setupChildVc:share title:@"我的" image:@"我的-未选择" selectedImage:@"我的-选择"];
-    
 }
 
 
@@ -55,26 +40,13 @@
     
     [vc.tabBarItem setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [vc.tabBarItem setTitleTextAttributes:attrSelected forState:UIControlStateSelected];
-                                           
-                                      
-    
+                             
     SWNavigationViewController *nav = [[SWNavigationViewController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];
 }
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
-//    
-//    //拦截处理
-//    if ([tabBarController.viewControllers indexOfObject:viewController] == 2) {
-//        if (UserInfo) {
-//            return YES;
-//        }else{
-//            [SWKit presenLogin];
-//            return NO;
-//        }
-//    }
     return YES;
-    
 }
 - (void)setSelectedIndex:(NSUInteger)selectedIndex
 {

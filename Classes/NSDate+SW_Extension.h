@@ -70,6 +70,18 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString *)timeSwitchTimestamp:(NSString *)formatTime andFormatter:(NSString *)format;
 //获取当前时分秒
 +(NSString*)getCurrentTimes;
+
+/**
+ 当前时间戳
+ */
++(NSString *)currentTimeStamp;
+
+
+/**
+ 当前时间戳（秒）
+ */
++(NSString *)currentTimeStampForInter;
+
 @end
 
 NS_ASSUME_NONNULL_END

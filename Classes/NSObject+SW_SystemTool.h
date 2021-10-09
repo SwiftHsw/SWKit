@@ -168,19 +168,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //设置主题颜色
 + (void)setMainColor:(NSString *)color;
-  
 
-/*
- *  设置行间距和字间距
- *
- *  @param string    字符串
- *  @param lineSpace 行间距
- *  @param kern      字间距
- *  @param font      字体大小
- *
- *  @return 富文本
- */
-+ (NSAttributedString *)getAttributedWithString:(NSString *)string WithLineSpace:(CGFloat)lineSpace kern:(CGFloat)kern font:(UIFont *)font;
 
 #pragma mark 类型为图片的时候做的操作
 /**

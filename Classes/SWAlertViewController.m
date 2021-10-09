@@ -24,7 +24,6 @@
     [alertCtr setValue:alertControllerMessageStr forKey:@"attributedMessage"];
     if (cancelButtonTitle.length) {
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            [MBProgressHUD hideAllHUDsForView:[ATGeneralFuncUtil getCurrentVC].view animated:YES];
             if (block) {
                 [viewController setNeedsStatusBarAppearanceUpdate];
                 block(SWAlertButtonStyleCancel);
@@ -35,7 +34,6 @@
         [alertCtr addAction:cancelAction];
         if (otherButtonTitle.length) {
             UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                [MBProgressHUD hideAllHUDsForView:[ATGeneralFuncUtil getCurrentVC].view animated:YES];
                 if (block) {
                     [viewController setNeedsStatusBarAppearanceUpdate];
                     block(SWAlertButtonStyleOK);
@@ -47,7 +45,6 @@
     } else {
         if (otherButtonTitle.length) {
             UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                [MBProgressHUD hideAllHUDsForView:[ATGeneralFuncUtil getCurrentVC].view animated:YES];
                 if (block) {
                     [viewController setNeedsStatusBarAppearanceUpdate];
                     block(SWAlertButtonStyleOK);

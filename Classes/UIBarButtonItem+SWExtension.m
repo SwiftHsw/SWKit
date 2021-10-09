@@ -78,4 +78,30 @@
     UIButton *button = self.customView;
     button.selected = selected;
 }
+
+/**
+ 生成导航按钮
+ */
++(instancetype)barButtonTitle:(NSString *)title
+                        image:(UIImage *)image
+                       button:(void (^)(UIButton *btn))buttonblock
+{
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 40, 40);
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setImage:image forState:UIControlStateNormal];
+    [btn sizeToFit];
+    if (btn.height < 40) {
+        btn.height = 40;
+    }
+    
+    if (btn.width < 40) {
+        btn.width = 40;
+    }
+    if (buttonblock) buttonblock(btn);
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:btn];
+    return item;
+}
+
 @end

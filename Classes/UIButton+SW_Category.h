@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 
-
 typedef NS_ENUM(NSInteger,SWImagePositionType) {
     SWImagePositionTypeLeft,   //图片在左，标题在右，默认风格
     SWImagePositionTypeRight,  //图片在右，标题在左
@@ -45,7 +44,30 @@ typedef NS_ENUM(NSInteger, SWMarginType) {
  */
 
 
-@interface UIButton (SWEdgeInsets)
+typedef void(^ButtonActionCallBack)(UIButton *button);
+
+@interface UIButton (SW_Category)
+
+/** 事件回调的block */
+@property (nonatomic, copy) ButtonActionCallBack buttonEventsBlock;
+
+/**
+ 添加按钮点击事件
+
+ @param action 事件
+ @param controlEvents 点击方式
+ */
+-(void)addCallBackAction:(ButtonActionCallBack)action
+        forControlEvents:(UIControlEvents)controlEvents;
+
+/**
+ 添加按钮点击事件
+
+ @param action 事件
+ */
+-(void)addCallBackAction:(ButtonActionCallBack)action;
+
+- (void)addTitle:(NSString *)title action:(ButtonActionCallBack)action;
 
 /**
  *  利用UIButton的titleEdgeInsets和imageEdgeInsets来实现图片和标题的自由排布
@@ -67,4 +89,19 @@ typedef NS_ENUM(NSInteger, SWMarginType) {
 - (void)setEdgeInsetsWithType:(SWEdgeInsetsType)edgeInsetsType marginType:(SWMarginType)marginType margin:(CGFloat)margin;
 
  
+
+
+/**
+ *  扩大或缩小 UIButton 的点击范围
+ *
+ *  @param top    向上增加的点击范围(注:top参数值为负数,则反方向减小点击范围)
+ *
+ *  @param right  向右增加的点击范围(注:right参数值为负数,则反方向减小点击范围)
+ *
+ *  @param bottom 向下增加的点击范围(注:bottom参数值为负数,则反方向减小点击范围)
+ *
+ *  @param left   向左增加的点击范围(注:left参数值为负数,则反方向减小点击范围)
+ */
+- (void)setEnlargeEdgeWithTop:(CGFloat)top right:(CGFloat)right bottom:(CGFloat)bottom left:(CGFloat)left;
+
 @end

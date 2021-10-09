@@ -7,7 +7,7 @@
 //
 
 
-
+#pragma mark **************************************头文件**********************************************
 #import <Foundation/Foundation.h>
 #import  <AVFoundation/AVFoundation.h>
 #include <sys/sysctl.h> 
@@ -18,8 +18,7 @@
 #import "SWTabbarController.h"            //Tabbar基类
 #import "SWSuperViewContoller.h"          //基类减少代码量
 #import "UIBarButtonItem+SWExtension.h"   //导航按钮工具
-#import "UIButton+SWEdgeInsets.h"         //按钮分类
-#import "UIButton+SW_Extention.h"         //按钮快速集成 
+#import "UIButton+SW_Category.h"         //按钮工具
 #import "UITextField+SW_Extension.h"      //动态输入框属性
 #import "UIView+SW_Extension.h"           //坐标工具
 #import "UIImage+SW_Extension.h"          //图片工具
@@ -27,12 +26,16 @@
 #import "UIColor+SW_Extension.h"          //颜色转换
 #import "NSDate+SW_Extension.h"           //时间管理大师
 #import "NSObject+SW_SystemTool.h"        //设备工具等
-#import "NSString+SW_Extension.h"          //字符串
+#import "NSString+SW_Extension.h"          //富文本、字符串
 #import "NSObject+SW_File.h"               //文件管理助手
-#import "AppUserCache.h"                  //app用户登陆数据缓存
-#import "UILabel+SW_Extension.h"          //文本
+#import "AppUserCache.h"                  //程序用户数据管理
+#import "UILabel+SW_Extension.h"          //文本控件
 #import "AppNetworkTool.h"                 //网络请求
 #import "SWSlidePopupView.h"               //底部弹出视图动画带手势
+#import "SWActionSheet.h"                  //底部弹窗
+
+#pragma mark **************************************宏定义**********************************************
+
 
 //输出
 #if DEBUG
@@ -297,5 +300,121 @@ green:((_green)/255.0) blue:((_blue)/255.0) alpha:(_alpha)]
         #define strongify(object) try{} @finally{} __typeof__(object) object = block##_##object;
         #endif
     #endif
+
+#pragma mark **************************************static_inline**********************************************
+//颜色
+UIKIT_STATIC_INLINE UIColor * SWColor(NSString *colroStr)
+{
+    return [UIColor colorWithHexString:colroStr];
+}
+
+//随机色
+UIKIT_STATIC_INLINE UIColor * SWRandomColor()
+{
+    return [UIColor randomColor];
+}
+
+//宽度适配
+UIKIT_STATIC_INLINE CGFloat SWAuto(CGFloat width)
+{
+    if (SCREEN_WIDTH > 600)
+    {
+        return ((width / 375.0) * 415.0);
+    }else{
+        return ((width / 375.0) * SCREEN_WIDTH);
+    }
+}
+
+//适配文字Font
+UIKIT_STATIC_INLINE NSUInteger adaptSize(NSUInteger fontSize)
+{
+    return SWAuto(fontSize);
+}
+
+//平方细体Font适配
+UIKIT_STATIC_INLINE UIFont * SWFont_Light(NSUInteger fontSize)
+{
+    UIFont *font = [UIFont fontWithName:@"PingFangSC-Light" size:adaptSize(fontSize)];
+    if (!font)
+    {
+        font = [UIFont systemFontOfSize:fontSize weight:0.5];
+    }
+    return font;
+}
+
+
+//中粗体Font适配
+UIKIT_STATIC_INLINE UIFont * SWFont_Semibold(NSUInteger fontSize)
+{
+    UIFont *font = [UIFont fontWithName:@"PingFangSC-Semibold" size:adaptSize(fontSize)];
+    if (!font)
+    {
+        font = [UIFont systemFontOfSize:fontSize weight:2];
+    }
+    return font;
+}
+
+//常规体Font适配
+UIKIT_STATIC_INLINE UIFont * SWFont_Regular(NSUInteger fontSize)
+{
+    UIFont *font = [UIFont fontWithName:@"PingFangSC-Regular" size:adaptSize(fontSize)];
+    if (!font)
+    {
+        font = [UIFont systemFontOfSize:fontSize];
+    }
+    return font;
+}
+
+//中黑体Font适配
+UIKIT_STATIC_INLINE UIFont * SWFont_Medium(NSUInteger fontSize)
+{
+    UIFont *font = [UIFont fontWithName:@"PingFangSC-Medium" size:adaptSize(fontSize)];
+    if (!font)
+    {
+        font = [UIFont boldSystemFontOfSize:fontSize];
+    }
+    return font;
+}
+
+//中黑体Font适配
+UIKIT_STATIC_INLINE UIFont * SWFont_Bold(NSUInteger fontSize)
+{
+    UIFont *font = [UIFont fontWithName:@"PingFang-SC-Bold" size:adaptSize(fontSize)];
+    if (!font)
+    {
+        font = [UIFont boldSystemFontOfSize:fontSize];
+    }
+    return font;
+}
+//画圆角
+UIKIT_STATIC_INLINE CAShapeLayer * shaperOLayer(CGFloat width , CGFloat height)
+{
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(1, 1, width-2, height - 2) cornerRadius:(height - 2) * 0.5];
+    CAShapeLayer *layer = [CAShapeLayer layer];
+    layer.path = path.CGPath;
+    return layer;
+}
+//清除空值
+UIKIT_STATIC_INLINE NSString * SWString(NSString *str)
+{
+    return [NSString stringWithFormat:@"%@",str];
+}
+//整型转字符串
+UIKIT_STATIC_INLINE NSString * SWIString(NSInteger f)
+{
+    return [NSString stringWithFormat:@"%ld",(long)f];
+}
+
+//浮点转字符串
+UIKIT_STATIC_INLINE NSString * SWFString(CGFloat f)
+{
+    return [NSString stringWithFormat:@"%.2lf",f];
+}
+//转NSURL
+UIKIT_STATIC_INLINE NSURL * SWUrl(NSString *str)
+{
+    return [NSURL URLWithString:SWString(str)];
+}
+
 #endif
 

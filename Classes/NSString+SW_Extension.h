@@ -59,6 +59,30 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSMutableAttributedString *)highlightDefaultDataTypes:(NSMutableAttributedString *)attributedString;
 
+
+
+/*
+*  设置行间距和字间距
+*
+*  @param string    字符串
+*  @param lineSpace 行间距
+*  @param kern      字间距
+*  @param font      字体大小
+*
+*  @return 富文本
+*/
++ (NSAttributedString *)getAttributedWithString:(NSString *)string
+                                  WithLineSpace:(CGFloat)lineSpace
+                                           kern:(CGFloat)kern
+                                           font:(UIFont *)font;
+
+/**
+ 富文本生成
+ */
++(NSMutableAttributedString *)attributedWithString:(NSString *)str
+                                             color:(UIColor *)color
+                                              font:(UIFont *)font;
+
 //获取富文本高
 + (NSInteger)hideLabelLayoutHeight:(NSString *)content
                   withTextFontSize:(CGFloat)mFontSize

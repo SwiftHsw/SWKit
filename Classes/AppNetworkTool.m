@@ -336,10 +336,8 @@ httpHeaderField:(NSString *)httpHeaderField
 - (void)downloadFileWithRequestUrl:(NSString *)url
                           complete:(void (^)(NSURL *filePath, NSError *error))complete
                           progress:(void (^)(id downloadProgress, double currentValue))progress{
-    
- 
-    NSString *urlString = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *URL = [NSURL URLWithString:urlString];
+     
+    NSURL *URL = [NSURL URLWithString:url];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];

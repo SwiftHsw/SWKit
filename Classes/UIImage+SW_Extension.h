@@ -12,6 +12,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/*
+  渐变方向
+ */
+typedef enum : NSUInteger {
+    GradientFromTopToBottom,
+    GradientFromLeftToRight,
+    GradientFromLeftTopToRightBottom,
+    GradientFromLeftBottomToRightTop,
+} GradientType;
+
+
 @interface UIImage (SW_Extension)
 /**  压缩图片*/
 + (UIImage *)imageWithOriginalImage:(UIImage *)image;
@@ -64,6 +76,19 @@ NS_ASSUME_NONNULL_BEGIN
 //获取单张图片的size
 + (CGSize)getSingleSize:(CGSize)singleSize max:(CGFloat)max;
 
+
+///创建渐变色的图片
+- (UIImage *)createImageSize:(CGSize)imageSize gradientColors:(NSArray *)colors   gradientType:(GradientType)gradientType;
+
+
+/**
+ 快速创建imageView
+
+ @param imageName 图片的名字
+ @param frame 图片的尺寸
+ @return 返回自身的对象
+ */
++(UIImageView *)sw_createimageViewWithImageName:(NSString *)imageName frame:(CGRect)frame;
 
 @end
 

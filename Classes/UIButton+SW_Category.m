@@ -12,6 +12,9 @@
 //------- 添加属性 -------//
 static void *buttonEventsBlockKey = &buttonEventsBlockKey;
 
+static NSString *const kIndicatorViewKey = @"sw_indicatorView";
+static NSString *const kButtonTextObjectKey = @"sw_buttonTextObject";
+
 @implementation UIButton (SW_Category)
 
 
@@ -233,5 +236,30 @@ static char leftNameKey;
     return CGRectContainsPoint(rect, point) ? self : nil;
 }
 
+- (void)showIndicator {
+    
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    indicator.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+    [indicator startAnimating];
+    
+    NSString *currentButtonText = self.titleLabel.text;
+    
+    objc_setAssociatedObject(self, &kButtonTextObjectKey, currentButtonText, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &kIndicatorViewKey, indicator, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    [self setTitle:@"" forState:UIControlStateNormal];
+    self.enabled = NO;
+    [self addSubview:indicator];
+}
 
+- (void)hideIndicator {
+    
+    NSString *currentButtonText = (NSString *)objc_getAssociatedObject(self, &kButtonTextObjectKey);
+    UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)objc_getAssociatedObject(self, &kIndicatorViewKey);
+    
+    [indicator removeFromSuperview];
+    [self setTitle:currentButtonText forState:UIControlStateNormal];
+    self.enabled = YES;
+    
+}
 @end

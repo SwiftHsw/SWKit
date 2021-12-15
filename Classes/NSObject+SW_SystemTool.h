@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 //版本适配
 +(void)versionsJudge;
 
+/** 获取运营商信息 */
++ (NSString *)getTelephonyInfo;
 
 //是否支持声音输入
 + (BOOL)hasMicphone;

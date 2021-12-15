@@ -86,10 +86,7 @@ typedef void(^ButtonActionCallBack)(UIButton *button);
  *  @param marginType     <#marginType description#>
  *  @param margin         <#margin description#>
  */
-- (void)setEdgeInsetsWithType:(SWEdgeInsetsType)edgeInsetsType marginType:(SWMarginType)marginType margin:(CGFloat)margin;
-
- 
-
+- (void)setEdgeInsetsWithType:(SWEdgeInsetsType)edgeInsetsType marginType:(SWMarginType)marginType margin:(CGFloat)margin; 
 
 /**
  *  扩大或缩小 UIButton 的点击范围
@@ -103,5 +100,15 @@ typedef void(^ButtonActionCallBack)(UIButton *button);
  *  @param left   向左增加的点击范围(注:left参数值为负数,则反方向减小点击范围)
  */
 - (void)setEnlargeEdgeWithTop:(CGFloat)top right:(CGFloat)right bottom:(CGFloat)bottom left:(CGFloat)left;
+
+
+/**
+ 给button添加转圈提示
+ */
+- (void) showIndicator;
+/**
+ 移除button上的转圈提示
+ */
+- (void) hideIndicator;
 
 @end

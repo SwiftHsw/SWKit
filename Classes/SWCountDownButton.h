@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class SWCountDownButton;
 
-typedef NSString* (^CountDownChanging)(SWCountDownButton *countDownButton,NSUInteger second);
-typedef NSString* (^CountDownFinished)(SWCountDownButton *countDownButton,NSUInteger second);
+typedef NSString* _Nullable (^CountDownChanging)(SWCountDownButton *countDownButton,NSUInteger second);
+typedef NSString* _Nullable (^CountDownFinished)(SWCountDownButton *countDownButton,NSUInteger second);
 typedef void (^TouchedCountDownButtonHandler)(SWCountDownButton *countDownButton,NSInteger tag);
 
 

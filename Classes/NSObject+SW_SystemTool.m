@@ -10,7 +10,8 @@
  
 #import <arpa/inet.h>
 #import <ifaddrs.h>
- 
+#import <CoreTelephony/CTCarrier.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
 static BOOL isYouKe = NO;
 static CFRunLoopObserverRef observer;
@@ -71,11 +72,21 @@ static CFRunLoopObserverRef observer;
         }
     } else {
         if( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]]){
+            
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         }
     }
 }
  
+#pragma mark 2.2、获取运营商信息
++ (NSString *)getTelephonyInfo
+{
+    CTTelephonyNetworkInfo *info = [[CTTelephonyNetworkInfo alloc] init];
+    CTCarrier *carrier = [info subscriberCellularProvider];
+    NSString *mCarrier = [NSString stringWithFormat:@"%@",[carrier carrierName]];
+    
+    return mCarrier;
+}
 
 
 /**
